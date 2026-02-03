@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  attendee: MyString
+  attended_event: MyString
+
+two:
+  attendee: MyString
+  attended_event: MyString

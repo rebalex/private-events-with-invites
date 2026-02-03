@@ -1,0 +1,31 @@
+<h1>My invites</h1>
+
+<h2 class="title">
+  Events I'm invited to:
+</h2>
+<%= render partial: "events/event",
+           collection: current_user.pending_events.where("datetime >= ?", Time.current),
+           as: :event %>
+
+<h2 class="title">
+  Events I'm going to:
+</h2>
+<%= render partial: "events/event",
+           collection: current_user.accepted_events.where("datetime >= ?", Time.current),
+           as: :event %>
+<br>
+
+<h2 class="title">
+  Events I'm not going to:
+</h2>
+<%= render partial: "events/event",
+           collection: current_user.declined_events.where("datetime >= ?", Time.current),
+           as: :event %>
+<br>
+
+<h2 class="title">
+  Events I went to:
+</h2>
+<%= render partial: "events/event",
+           collection: current_user.accepted_events.where("datetime < ?", Time.current),
+           as: :event %>

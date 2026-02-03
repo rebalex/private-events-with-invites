@@ -1,0 +1,12 @@
+<h1><%= @event.title %></h1>
+
+<p><%= @event.description %></p>
+<p>Date: <%= formatted_event_datetime(@event.datetime) %></p>
+<p>Location: <%= @event.location %></p>
+<p>Created by: <%= @event.creator.username %></p>
+<br>
+<h4>Who's coming?</h4>
+<% @event.accepted_users.each do |accepted_user| %>
+  <div><%= accepted_user.username %></div>
+<% end %>
+

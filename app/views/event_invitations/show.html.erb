@@ -1,0 +1,4 @@
+<h2 class="title">My invites</h2>
+<%= render partial: "events/event",
+           collection: current_user.pending_events.where("datetime >= ?", Time.current),
+           as: :event %>

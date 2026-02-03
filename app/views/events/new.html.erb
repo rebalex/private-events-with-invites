@@ -1,0 +1,21 @@
+<h1>Create an event</h1>
+  <%= form_with model: @event, method: :post do |form| %>
+  <%= form.label :title %>
+  <%= form.text_field :title %><br/>
+  <%= form.label :description %>
+  <%= form.text_area :description %><br/>
+  <%= form.label :datetime %>
+  <%= form.datetime_local_field :datetime,
+          min: Time.current.strftime("%Y-%m-%dT%H:%M"),
+          value: @event.datetime&.strftime("%Y-%m-%dT%H:%M") %><br/>
+  <%= form.label :location %> 
+  <%= form.text_field :location %><br/>
+  <%= form.label :invited_users, "Who's invited?" %> <br>
+  <%= form.collection_check_boxes :invited_user_ids, User.where.not(id: current_user.id).order(:username), :id, :username do |user| %>
+    <div>
+      <%= user.check_box %>
+      <%= user.text %>
+    </div>
+  <% end %>
+  <%= submit_tag("Create new event") %>
+<% end %>

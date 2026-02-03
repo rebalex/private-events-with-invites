@@ -1,0 +1,26 @@
+<% invitation = event.event_invitations.find_by(invited_user: current_user) %>
+<div class="event-card">
+  <h3><%= event.title %></h3>
+  <p><%= event.description %></p>
+  <p>Date: <%= formatted_event_datetime(event.datetime) %></p>
+  <p>Location: <%= event.location %></p>
+  <div>Created by: <%= event.creator.username %></div>
+  
+  <% if invitation && !event.host?(current_user) %>
+    <% if invitation.pending? %>
+      <%= button_to "I'm coming!", 
+            event_invitation_path(invitation), 
+            method: :patch, 
+            params: { event_invitation: { status: "accepted" } } %>
+
+      <%= button_to "Can't make it", 
+            event_invitation_path(invitation), 
+            method: :patch, 
+            params: { event_invitation: { status: "declined" } } %>
+    <% else %>
+      <p>Your response: <%= invitation.status.titleize %></p>
+    <% end %>
+  <% elsif event.host?(current_user) %>
+    <p>You’re hosting this event</p>
+  <% end %>
+</div>

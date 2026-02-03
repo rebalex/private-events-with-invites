@@ -1,2 +1,2 @@
-# private-events-with-invites
-The Odin Project pushed me to add invites to my existing Private-Events project so I created another version to add this major restructuring and functionality
+# README
+This project is an assignment as part of The Odin Project. The challenge is to build a site similar to a private Eventbrite which allows users to create events and then manage user signups. The new concepts to apply to this project are modelling many-to-many relationships and being conscious about foreign keys and class names.

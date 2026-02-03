@@ -1,0 +1,21 @@
+<h1>Upcoming events</h1>
+
+<ul>
+  <% Event.future.each do |event| %>
+    <li>
+      <strong><%= link_to event.title, "/events/#{event.id}" %></strong>
+    </li>
+      <br>
+  <% end %>
+</ul>
+
+<h1>Past events</h1>
+
+<ul>
+  <% Event.past.each do |event| %>
+    <li>
+      <strong><%= link_to event.title, "/events/#{event.id}" %></strong>
+    </li>
+      <br>
+  <% end %>
+</ul>
